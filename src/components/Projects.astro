@@ -1,0 +1,76 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+
+const projects = [
+  {
+    slug: "v-app",
+    title: "V-App",
+    description:
+      "An application using an AI agent to display daily Riot Games store updates via open-source REST APIs. Managed application workflow with BLoC state management and tracked errors using Firebase Crashlytics.",
+    tags: ["Flutter", "BLoC", "AI Agent", "REST APIs", "Firebase Crashlytics"],
+    link: "https://github.com/septiian07/v-app",
+    github: "https://github.com/septiian07/v-app",
+  },
+  {
+    slug: "spiritia-mobile-app",
+    title: "Spiritia Mobile App",
+    description:
+      "A data-entry android application using BLoC state management, integrating Figma UI designs and RESTful APIs. Integrated Firebase Crashlytics for error tracking and Remote Config to manage environments (dev/staging/prod) and enforce version updates.",
+    tags: ["Flutter", "BLoC", "Firebase", "Remote Config", "RESTful APIs"],
+    link: "https://play.google.com/store/apps/details?id=com.spiritiaapps&hl=id",
+    playStore:
+      "https://play.google.com/store/apps/details?id=com.spiritiaapps&hl=id",
+  },
+  {
+    slug: "mess-attendance",
+    title: "MESS - Attendance & Security System",
+    description:
+      "A comprehensive attendance application featuring GPS tracking, mock location detection, and facial recognition for secure check-ins. Built for high-security environments.",
+    tags: ["Flutter", "GetX", "ML Kit", "LBS", "Mock Location"],
+    link: "#",
+    playStore:
+      "https://play.google.com/store/apps/details?id=com.biofarma.mess.qa",
+    appStore: "https://apps.apple.com/us/app/mess-by-biofarma/id6547835929",
+  },
+  {
+    slug: "gym-application",
+    title: "Gym Application",
+    description:
+      "A specialized app for gym management including custom audio/video players, QR code generation, and class schedule management. Optimized for fitness centers.",
+    tags: ["Flutter", "GetX", "RESTful APIs", "Media"],
+    link: "#",
+  },
+  {
+    slug: "pos-attendance",
+    title: "Point of Sale (POS) & Attendance",
+    description:
+      "Multi-device compatible POS application integrating barcode scanning, Bluetooth printer, and Google ML Kit for device ID verification. Streamlines retail operations.",
+    tags: ["Flutter", "MVVM", "Firebase", "Hardware Integration"],
+    link: "#",
+  },
+  {
+    slug: "restoapp",
+    title: "RestoApp",
+    description:
+      "Online food ordering platform integrating OTP verification, Google SSO, and comprehensive analytics. Designed to maximize conversion rates and user retention.",
+    tags: ["Flutter", "MVVM", "Firebase", "Google SSO"],
+    link: "#",
+  },
+];
+---
+
+<section id="projects" class="scroll-mt-32">
+  <div class="flex items-center gap-6 mb-16">
+    <h2 class="text-4xl font-extrabold text-white tracking-tight">
+      Featured Projects
+    </h2>
+    <div
+      class="h-px flex-grow bg-gradient-to-r from-cyan-500/30 to-transparent"
+    >
+    </div>
+  </div>
+
+  <div class="space-y-16 md:space-y-24">
+    {projects.map((project) => <ProjectCard {...project} />)}
+  </div>
+</section>

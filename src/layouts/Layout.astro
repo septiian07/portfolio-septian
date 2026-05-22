@@ -1,0 +1,58 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "Portfolio of Septian Yoga, a Flutter Developer based in Bandung, Indonesia.",
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-cyan-500/30"
+  >
+    <!-- Subtle Background Glow -->
+    <div class="fixed inset-0 z-[-2] bg-slate-950"></div>
+    <div
+      class="fixed inset-0 z-[-1] bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(6,182,212,0.15),rgba(255,255,255,0))]"
+    >
+    </div>
+
+    <!-- Top Cyan Glow -->
+    <div
+      class="fixed top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-cyan-500/10 blur-[120px] rounded-full pointer-events-none z-[-1]"
+    >
+    </div>
+    <!-- Bottom Violet Glow -->
+    <div
+      class="fixed bottom-0 right-0 w-[600px] h-[600px] bg-violet-500/5 blur-[150px] rounded-full pointer-events-none z-[-1]"
+    >
+    </div>
+
+    <main class="max-w-6xl mx-auto px-6 py-12 md:py-24 space-y-32">
+      <slot />
+    </main>
+  </body>
+</html>
