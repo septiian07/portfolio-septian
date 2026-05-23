@@ -2,81 +2,55 @@
 ---
 
 <section
-  class="flex flex-col items-start justify-center min-h-[85vh] animate-fade-in-up relative"
+  class="flex flex-col items-start justify-center min-h-[85vh] pt-28 animate-fade-in"
+  id="hero"
 >
-  <!-- Decorative Ambient Blur -->
-  <div
-    class="absolute -top-32 -left-32 w-64 h-64 bg-cyan-500/20 blur-[100px] rounded-full pointer-events-none"
-  >
-  </div>
-
-  <div
-    class="inline-flex items-center px-4 py-2 mb-8 rounded-full glass border border-cyan-500/30 text-cyan-400 text-sm font-semibold tracking-widest uppercase shadow-[0_0_20px_rgba(34,211,238,0.15)] relative overflow-hidden group"
-  >
-    <div
-      class="absolute inset-0 bg-gradient-to-r from-cyan-500/0 via-cyan-500/10 to-cyan-500/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"
-    >
-    </div>
-    <span
-      class="w-2.5 h-2.5 rounded-full bg-cyan-400 mr-3 animate-pulse shadow-[0_0_8px_rgba(34,211,238,0.8)]"
-    ></span>
-    Available for new opportunities
+  <div class="flex items-center gap-3 mb-12">
+    <span class="w-1.5 h-1.5 rounded-full bg-sub animate-pulse"></span>
+    <span class="font-label text-[11px] uppercase tracking-[0.1em] text-muted">
+      Available for new opportunities
+    </span>
   </div>
 
   <h1
-    class="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-6 leading-[1] drop-shadow-2xl bg-gradient-to-br from-white via-slate-200 to-slate-500 bg-clip-text text-transparent [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]"
+    class="font-serif text-heading font-bold leading-[1.08] tracking-[-0.02em] mb-6"
+    style="font-size: clamp(2.75rem, 5.5vw, 4rem);"
   >
-    Septian Yoga<span class="text-cyan-500 text-glow">.</span>
+    Septian Yoga<span class="text-ghost">.</span>
   </h1>
 
   <h2
-    class="text-3xl md:text-5xl lg:text-6xl font-medium text-slate-400 mb-8 tracking-tight"
+    class="font-label text-[11px] uppercase tracking-[0.1em] text-muted mb-10"
   >
     Flutter Developer
   </h2>
 
   <p
-    class="text-xl md:text-2xl text-slate-400 max-w-3xl mb-12 leading-relaxed font-light"
+    class="font-serif text-sub leading-[1.6] max-w-[58ch] mb-14"
+    style="font-size: clamp(1.15rem, 2vw, 1.5rem);"
   >
     Engineering highly performant, scalable mobile experiences with technical
     precision. Specializing in Clean Architecture, MVVM, and seamless
     cross-platform delivery.
   </p>
 
-  <div class="flex flex-wrap gap-6">
+  <div class="flex flex-wrap gap-5 items-center">
     <a
       href="#contact"
-      class="group relative px-10 py-5 rounded-2xl bg-cyan-500 text-slate-950 font-bold hover:bg-cyan-400 transition-all shadow-[0_0_30px_rgba(34,211,238,0.4)] hover:shadow-[0_0_50px_rgba(34,211,238,0.6)] hover:-translate-y-1 ease-out duration-300 overflow-hidden text-lg"
+      class="px-7 py-3 bg-inv text-inv-on font-sans font-semibold text-sm tracking-tight rounded-[0.25rem] hover:opacity-80 transition-opacity duration-[400ms]"
     >
-      <div
-        class="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-300 ease-out"
-      >
-      </div>
-      <span class="relative">Contact Me</span>
+      Contact Me
     </a>
     <a
-      href="https://drive.google.com/file/d/13TMLL2g4Xzg-NqM_5xM3Q8gkfuzHULah/view?usp=sharing"
+      href="https://drive.google.com/file/d/1Gj253Q2AYbJFCg1A7805U4vRrnFluSxc/view?usp=sharing"
       target="_blank"
       rel="noopener noreferrer"
-      class="px-10 py-5 rounded-2xl glass border border-white/10 text-white font-medium hover:border-cyan-500/50 hover:bg-cyan-950/30 hover:text-cyan-300 transition-all hover:shadow-[0_0_30px_rgba(34,211,238,0.2)] hover:-translate-y-1 ease-out duration-300 text-lg"
+      class="group relative font-sans text-heading text-sm font-medium tracking-tight px-2 py-3"
     >
       Download CV
+      <span
+        class="absolute bottom-2 left-1/2 -translate-x-1/2 h-px w-0 bg-heading group-hover:w-[calc(100%-16px)] transition-all duration-[400ms] ease-[var(--ease-out-quart)]"
+      ></span>
     </a>
   </div>
 </section>
-
-<style>
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  .animate-fade-in-up {
-    animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-</style>

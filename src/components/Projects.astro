@@ -59,18 +59,12 @@ const projects = [
 ];
 ---
 
-<section id="projects" class="scroll-mt-32">
-  <div class="flex items-center gap-6 mb-16">
-    <h2 class="text-4xl font-extrabold text-white tracking-tight">
-      Featured Projects
-    </h2>
-    <div
-      class="h-px flex-grow bg-gradient-to-r from-cyan-500/30 to-transparent"
-    >
-    </div>
+<section id="projects" class="scroll-mt-32" style="margin-top: 160px;">
+  <div class="font-label text-[11px] uppercase tracking-[0.1em] text-muted mb-16">
+    Featured Projects
   </div>
 
-  <div class="space-y-16 md:space-y-24">
+  <div class="grid md:grid-cols-2 gap-6">
     {projects.map((project) => <ProjectCard {...project} />)}
   </div>
 </section>

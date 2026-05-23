@@ -12,11 +12,11 @@ const experiences = [
       "Implemented system checks to detect active developer modes and validate auto-time.",
       "Updated visual assets, color palettes, and fixed software bugs for Dinotrack.",
       "Built custom audio/video players and QR code generation (Gym App).",
-      "Created RESTful API endpoints for user onboarding and class schedule management (MyC Phase 3A).",
+      "Created RESTful API endpoints for user onboarding and class schedule management using Java Springboot.",
       "Wrote unit tests for mobile applications, achieving over 80% test coverage.",
       "Integrated Firebase Cloud Messaging (FCM) for push notifications.",
-      "Collaborated with UI/UX designers, QA engineers, and backend developers."
-    ]
+      "Collaborated with UI/UX designers, QA engineers, and backend developers.",
+    ],
   },
   {
     company: "HPY Solution - PT HPY Solusi Utama Indonesia",
@@ -29,8 +29,8 @@ const experiences = [
       "Implemented facial recognition via Google ML Kit, location tracking, and device ID verification.",
       "Applied MVVM architecture and integrated Firebase for analytics, messaging, and crash reporting.",
       "Managed local data storage with Shared Preferences and released 3+ projects to the Google Play Store.",
-      "Integrated RESTful APIs."
-    ]
+      "Integrated RESTful APIs.",
+    ],
   },
   {
     company: "Sampulkreativ - PT Sampul Kreatif Technology",
@@ -42,63 +42,50 @@ const experiences = [
       "Implemented UI designs from Figma in collaboration with UI/UX teams and project managers.",
       "Integrated OTP verification and Google SSO.",
       "Applied MVVM design patterns and integrated Firebase for analytics, push notifications, and crash reporting.",
-      "Managed local data storage with Shared Preferences and integrated RESTful APIs."
-    ]
-  }
+      "Managed local data storage with Shared Preferences and integrated RESTful APIs.",
+    ],
+  },
 ];
 ---
 
-<section id="experience" class="scroll-mt-32">
-  <div class="flex items-center gap-6 mb-16">
-    <h2 class="text-4xl font-extrabold text-white tracking-tight">Experience</h2>
-    <div class="h-px flex-grow bg-gradient-to-r from-violet-500/30 to-transparent"></div>
+<section id="experience" class="scroll-mt-32" style="margin-top: 160px;">
+  <div
+    class="font-label text-[11px] uppercase tracking-[0.1em] text-muted mb-16"
+  >
+    Experience
   </div>
 
-  <div class="space-y-16">
-    {experiences.map((job, index) => (
-      <div class="relative pl-8 md:pl-0">
-        <!-- Desktop Timeline Line (Glowing) -->
-        <div class="hidden md:block absolute left-[159px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-cyan-500/50 via-violet-500/20 to-transparent"></div>
-        
-        <div class="md:grid md:grid-cols-[140px_minmax(0,1fr)] md:gap-12 items-start relative group">
-          
-          <!-- Desktop Timeline Dot (Neon) -->
-          <div class="hidden md:block absolute left-[159px] top-2 w-5 h-5 -translate-x-[7.5px] rounded-full bg-slate-900 border-2 border-cyan-500 shadow-[0_0_20px_rgba(6,182,212,0.8)] group-hover:bg-cyan-400 group-hover:scale-125 transition-all duration-500 z-10"></div>
-
-          <!-- Mobile Timeline Line & Dot -->
-          <div class="md:hidden absolute left-0 top-2 bottom-0 w-[2px] bg-gradient-to-b from-cyan-500/50 to-transparent"></div>
-          <div class="md:hidden absolute left-0 top-2 w-4 h-4 -translate-x-[7px] rounded-full bg-slate-900 border-2 border-cyan-500 shadow-[0_0_10px_rgba(6,182,212,0.8)] group-hover:bg-cyan-400 transition-all z-10"></div>
-
-          <!-- Period -->
-          <header class="mb-4 md:mb-0 mt-1">
-            <div class="text-sm font-bold text-cyan-400/80 uppercase tracking-widest leading-relaxed">{job.period}</div>
-          </header>
-
-          <!-- Content -->
-          <div class="glass p-8 md:p-12 rounded-[2.5rem] group-hover:glass-hover transition-all duration-500 ease-out border border-white/5 hover:border-cyan-500/30 relative overflow-hidden shadow-2xl group-hover:shadow-[0_0_50px_rgba(6,182,212,0.1)] hover:-translate-y-1">
-            <!-- Subtle internal glow -->
-            <div class="absolute -top-20 -right-20 w-48 h-48 bg-violet-500/10 blur-[80px] rounded-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-            <h3 class="text-3xl font-bold text-slate-100 group-hover:text-cyan-300 transition-colors tracking-tight mb-3">
-              {job.role}
-            </h3>
-            <div class="text-slate-400 font-medium mb-8 flex flex-col sm:flex-row sm:items-center sm:gap-3 text-lg">
-              <span class="text-white/90">{job.company}</span>
-              <span class="hidden sm:inline text-cyan-500/40 text-2xl">•</span>
-              <span class="text-slate-500">{job.location}</span>
-            </div>
-            
-            <ul class="space-y-5">
-              {job.achievements.map((item) => (
-                <li class="flex items-start gap-4 text-slate-300 text-lg leading-relaxed font-light">
-                  <div class="mt-2.5 shrink-0 w-2 h-2 rounded-full bg-cyan-500/60 shadow-[0_0_8px_rgba(6,182,212,0.6)]"></div>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
+  <div class="space-y-20">
+    {
+      experiences.map((job) => (
+        <div>
+          <div class="font-label text-[11px] uppercase tracking-[0.1em] text-ghost mb-4">
+            {job.period}
           </div>
+
+          <h3
+            class="font-serif text-heading font-semibold tracking-tight mb-2"
+            style="font-size: clamp(1.5rem, 2.5vw, 2rem);"
+          >
+            {job.role}
+          </h3>
+
+          <div class="flex flex-col sm:flex-row sm:items-center sm:gap-3 text-muted mb-8">
+            <span class="text-sub">{job.company}</span>
+            <span class="hidden sm:inline text-rule">·</span>
+            <span class="text-ghost">{job.location}</span>
+          </div>
+
+          <ul class="space-y-4">
+            {job.achievements.map((item) => (
+              <li class="flex items-start gap-4 text-body leading-[1.7]">
+                <span class="mt-[0.65rem] shrink-0 w-1 h-1 rounded-full bg-ghost" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
         </div>
-      </div>
-    ))}
+      ))
+    }
   </div>
 </section>
