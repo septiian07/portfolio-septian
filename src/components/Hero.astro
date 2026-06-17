@@ -1,56 +1,113 @@
 ---
+
 ---
 
 <section
-  class="flex flex-col items-start justify-center min-h-[85vh] pt-28 animate-fade-in"
+  class="flex flex-col lg:flex-row items-center lg:items-start justify-between min-h-[85vh] pt-28 gap-12 lg:gap-16 animate-fade-in"
   id="hero"
 >
-  <div class="flex items-center gap-3 mb-12">
-    <span class="w-1.5 h-1.5 rounded-full bg-sub animate-pulse"></span>
-    <span class="font-label text-[11px] uppercase tracking-[0.1em] text-muted">
-      Available for new opportunities
-    </span>
+  <!-- Text Content -->
+  <div
+    class="flex flex-col items-start justify-center flex-1 order-2 lg:order-1"
+  >
+    <div class="flex items-center gap-3 mb-12">
+      <span class="w-1.5 h-1.5 rounded-full bg-sub animate-pulse"></span>
+      <span
+        class="font-label text-[11px] uppercase tracking-[0.1em] text-muted"
+      >
+        Available for new opportunities
+      </span>
+    </div>
+
+    <h1
+      class="font-serif text-heading font-bold leading-[1.08] tracking-[-0.02em] mb-6"
+      style="font-size: clamp(2.75rem, 5.5vw, 4rem);"
+    >
+      Septian Yoga<span class="text-ghost">.</span>
+    </h1>
+
+    <h2
+      class="font-label text-[11px] uppercase tracking-[0.1em] text-muted mb-10"
+    >
+      Flutter Developer
+    </h2>
+
+    <p
+      class="font-serif text-sub leading-[1.6] max-w-[58ch] mb-14"
+      style="font-size: clamp(1.15rem, 2vw, 1.5rem);"
+    >
+      Engineering highly performant, scalable mobile experiences with technical
+      precision. Specializing in Clean Architecture, MVVM, and seamless
+      cross-platform delivery.
+    </p>
+
+    <div class="flex flex-wrap gap-5 items-center">
+      <a
+        href="#contact"
+        class="px-7 py-3 bg-inv text-inv-on font-sans font-semibold text-sm tracking-tight rounded-[0.25rem] hover:opacity-80 transition-opacity duration-[400ms]"
+      >
+        Contact Me
+      </a>
+      <a
+        href="https://drive.google.com/file/d/1Gj253Q2AYbJFCg1A7805U4vRrnFluSxc/view?usp=sharing"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group relative font-sans text-heading text-sm font-medium tracking-tight px-2 py-3"
+      >
+        Download CV
+        <span
+          class="absolute bottom-2 left-1/2 -translate-x-1/2 h-px w-0 bg-heading group-hover:w-[calc(100%-16px)] transition-all duration-[400ms] ease-[var(--ease-out-quart)]"
+        ></span>
+      </a>
+    </div>
   </div>
 
-  <h1
-    class="font-serif text-heading font-bold leading-[1.08] tracking-[-0.02em] mb-6"
-    style="font-size: clamp(2.75rem, 5.5vw, 4rem);"
-  >
-    Septian Yoga<span class="text-ghost">.</span>
-  </h1>
-
-  <h2
-    class="font-label text-[11px] uppercase tracking-[0.1em] text-muted mb-10"
-  >
-    Flutter Developer
-  </h2>
-
-  <p
-    class="font-serif text-sub leading-[1.6] max-w-[58ch] mb-14"
-    style="font-size: clamp(1.15rem, 2vw, 1.5rem);"
-  >
-    Engineering highly performant, scalable mobile experiences with technical
-    precision. Specializing in Clean Architecture, MVVM, and seamless
-    cross-platform delivery.
-  </p>
-
-  <div class="flex flex-wrap gap-5 items-center">
-    <a
-      href="#contact"
-      class="px-7 py-3 bg-inv text-inv-on font-sans font-semibold text-sm tracking-tight rounded-[0.25rem] hover:opacity-80 transition-opacity duration-[400ms]"
-    >
-      Contact Me
-    </a>
-    <a
-      href="https://drive.google.com/file/d/1Gj253Q2AYbJFCg1A7805U4vRrnFluSxc/view?usp=sharing"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="group relative font-sans text-heading text-sm font-medium tracking-tight px-2 py-3"
-    >
-      Download CV
-      <span
-        class="absolute bottom-2 left-1/2 -translate-x-1/2 h-px w-0 bg-heading group-hover:w-[calc(100%-16px)] transition-all duration-[400ms] ease-[var(--ease-out-quart)]"
-      ></span>
-    </a>
+  <!-- Profile Photo -->
+  <div class="profile-photo-wrapper order-1 lg:order-2 flex-shrink-0 lg:mt-8">
+    <div class="profile-photo-container">
+      <img
+        src="/assets/profile.jpeg"
+        alt="Septian Yoga - Flutter Developer"
+        class="profile-photo"
+        loading="eager"
+      />
+    </div>
   </div>
 </section>
+
+<style>
+  .profile-photo-wrapper {
+    position: relative;
+  }
+
+  .profile-photo-container {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid var(--color-rule-subtle);
+  }
+
+  .profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+  }
+
+  /* Responsive sizing */
+  @media (max-width: 1023px) {
+    .profile-photo-container {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .profile-photo-container {
+      width: 320px;
+      height: 320px;
+    }
+  }
+</style>
