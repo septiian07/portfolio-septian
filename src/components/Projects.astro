@@ -5,6 +5,7 @@ const projects = [
   {
     slug: "v-app",
     title: "V-App",
+    kind: "AI-powered Store Tracker",
     description:
       "An application using an AI agent to display daily Riot Games store updates via open-source REST APIs. Managed application workflow with BLoC state management and tracked errors using Firebase Crashlytics.",
     tags: ["Flutter", "BLoC", "AI Agent", "REST APIs", "Firebase Crashlytics"],
@@ -14,6 +15,7 @@ const projects = [
   {
     slug: "spiritia-mobile-app",
     title: "Spiritia Mobile App",
+    kind: "Data-entry Android App",
     description:
       "A data-entry android application using BLoC state management, integrating Figma UI designs and RESTful APIs. Integrated Firebase Crashlytics for error tracking and Remote Config to manage environments (dev/staging/prod) and enforce version updates.",
     tags: ["Flutter", "BLoC", "Firebase", "Remote Config", "RESTful APIs"],
@@ -24,6 +26,7 @@ const projects = [
   {
     slug: "mess-attendance",
     title: "MESS - Attendance & Security System",
+    kind: "Secure Attendance App",
     description:
       "A comprehensive attendance application featuring GPS tracking, mock location detection, and facial recognition for secure check-ins. Built for high-security environments.",
     tags: ["Flutter", "GetX", "ML Kit", "LBS", "Mock Location"],
@@ -35,6 +38,7 @@ const projects = [
   {
     slug: "gym-application",
     title: "Gym Application",
+    kind: "Fitness Management App",
     description:
       "A specialized app for gym management including custom audio/video players, QR code generation, and class schedule management. Optimized for fitness centers.",
     tags: ["Flutter", "GetX", "RESTful APIs", "Media"],
@@ -43,6 +47,7 @@ const projects = [
   {
     slug: "pos-attendance",
     title: "Point of Sale (POS) & Attendance",
+    kind: "Retail Operations App",
     description:
       "Multi-device compatible POS application integrating barcode scanning, Bluetooth printer, and Google ML Kit for device ID verification. Streamlines retail operations.",
     tags: ["Flutter", "MVVM", "Firebase", "Hardware Integration"],
@@ -51,6 +56,7 @@ const projects = [
   {
     slug: "restoapp",
     title: "RestoApp",
+    kind: "Food Ordering Platform",
     description:
       "Online food ordering platform integrating OTP verification, Google SSO, and comprehensive analytics. Designed to maximize conversion rates and user retention.",
     tags: ["Flutter", "MVVM", "Firebase", "Google SSO"],
@@ -59,12 +65,54 @@ const projects = [
 ];
 ---
 
-<section id="projects" class="scroll-mt-32" style="margin-top: 160px;">
-  <div class="font-label text-[11px] uppercase tracking-[0.1em] text-muted mb-16">
-    Featured Projects
-  </div>
+<section id="projects" class="section">
+  <div class="container">
+    <div class="sec-head">
+      <h2>Selected <em>Projects</em></h2>
+      <span class="rule"></span>
+      <a
+        class="more"
+        href="https://github.com/septiian07"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        View all projects
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </a>
+    </div>
 
-  <div class="grid md:grid-cols-2 gap-6">
-    {projects.map((project) => <ProjectCard {...project} />)}
+    <div class="grid">
+      {
+        projects.map((p, i) => (
+          <div data-reveal style={`--d:${(i % 3) * 0.12}s`}>
+            <ProjectCard {...p} index={i + 1} />
+          </div>
+        ))
+      }
+    </div>
   </div>
 </section>
+
+<style>
+  .grid {
+    display: grid;
+    gap: 28px;
+    grid-template-columns: 1fr;
+  }
+  .grid > div {
+    display: flex;
+  }
+  .grid > div > :global(*) {
+    flex: 1;
+  }
+  @media (min-width: 700px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1040px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

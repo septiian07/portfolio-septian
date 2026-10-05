@@ -1,51 +1,253 @@
 ---
 const skillCategories = [
-  {
-    category: "Mobile Frameworks & Languages",
-    skills: ["Dart", "Flutter"]
-  },
-  {
-    category: "Architecture & State Management",
-    skills: ["MVVM", "Stacked", "GetX", "BLoC"]
-  },
+  { category: "Mobile", skills: ["Dart", "Flutter"] },
+  { category: "Architecture & State", skills: ["MVVM", "Stacked", "GetX", "BLoC"] },
   {
     category: "Advanced Integrations",
-    skills: ["Google ML Kit (Face Detection)", "Location-Based Services (LBS)", "Firebase (FCM, Analytics, Crashlytics)", "Mock Location Detection"]
+    skills: ["Google ML Kit", "Location-Based Services", "Firebase", "Mock Location Detection"],
   },
-  {
-    category: "Backend & APIs",
-    skills: ["Dio & Retrofit", "Java Springboot", "JWT", "RESTful APIs"]
-  },
-  {
-    category: "Tools & Workflow",
-    skills: ["GitHub", "GitLab", "Slack", "Trello", "ClickUp", "Figma to Code"]
-  }
+  { category: "Backend & APIs", skills: ["Dio & Retrofit", "Java Springboot", "JWT", "RESTful APIs"] },
+  { category: "Tools & Workflow", skills: ["GitHub", "GitLab", "Slack", "Trello", "ClickUp", "Figma to Code"] },
+];
+
+const steps = [
+  { t: "Discover", d: "Understanding goals, users, and technical requirements.", i: "M21 21l-4.3-4.3M11 18a7 7 0 110-14 7 7 0 010 14z" },
+  { t: "Architect", d: "Clean Architecture, MVVM and state management planning.", i: "M12 3l9 5-9 5-9-5 9-5zM3 13l9 5 9-5" },
+  { t: "Build", d: "Pixel-perfect Figma-to-Flutter UI with clean, typed code.", i: "M8 8l-4 4 4 4M16 8l4 4-4 4M14 5l-4 14" },
+  { t: "Test", d: "Unit & widget tests aiming for 80%+ coverage.", i: "M5 13l4 4L19 7" },
+  { t: "Ship", d: "Release to Play Store & App Store with monitoring.", i: "M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" },
 ];
 ---
 
-<section id="skills" class="scroll-mt-32" style="margin-top: 160px;">
-  <div class="font-label text-[11px] uppercase tracking-[0.1em] text-muted mb-16">
-    Technical Skills
-  </div>
-
-  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16">
-    {skillCategories.map((group) => (
-      <div>
-        <h3 class="font-serif text-heading font-semibold text-lg tracking-tight mb-6 leading-tight">
-          {group.category}
-        </h3>
-
-        <div class="flex flex-wrap gap-2.5">
-          {group.skills.map((skill) => (
-            <span
-              class="font-label text-[11px] tracking-[0.08em] text-sub px-3 py-1.5 rounded-[0.25rem] transition-colors duration-300 hover:text-heading"
-              style="border: 1px solid var(--color-rule);"
-            >
-              {skill}
-            </span>
-          ))}
+<section id="skills" class="section">
+  <div class="container">
+    <div class="trio">
+      <!-- Skills -->
+      <div class="col" data-reveal="left">
+        <div class="sec-head small"><h2>Skills <em>&amp; Stack</em></h2><span class="rule"></span></div>
+        <div class="groups">
+          {
+            skillCategories.map((g) => (
+              <div class="group">
+                <p class="label label-red">{g.category}</p>
+                <div class="chips">
+                  {g.skills.map((s) => (
+                    <span>{s}</span>
+                  ))}
+                </div>
+              </div>
+            ))
+          }
         </div>
       </div>
-    ))}
+
+      <!-- Process -->
+      <div class="col" data-reveal style="--d: 0.12s">
+        <div class="sec-head small"><h2>Work <em>Process</em></h2><span class="rule"></span></div>
+        <ol class="steps">
+          {
+            steps.map((s, i) => (
+              <li style={`--i:${i}`}>
+                <span class="n">{String(i + 1).padStart(2, "0")}</span>
+                <span class="ico">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d={s.i} />
+                  </svg>
+                </span>
+                <div>
+                  <h3>{s.t}</h3>
+                  <p>{s.d}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+
+      <!-- Quote -->
+      <aside class="quote" data-reveal="right" style="--d: 0.24s">
+        <div class="q-glow"></div>
+        <svg class="mark" width="44" height="44" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.5 6C6 7 4 10 4 14v4h6v-6H7c0-2 1-3.5 3-4.2L9.5 6zm10 0C16 7 14 10 14 14v4h6v-6h-3c0-2 1-3.5 3-4.2L19.5 6z"></path></svg>
+        <p class="q-text">
+          Good code is<br />not just how<br />it runs, but how<br />it <em>feels</em>.
+        </p>
+        <p class="sign">Septian</p>
+        <p class="label q-foot">Let's build something<br />great together.</p>
+      </aside>
+    </div>
   </div>
 </section>
+
+<style>
+  .trio {
+    display: grid;
+    gap: 56px 48px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 1000px) {
+    .trio {
+      grid-template-columns: 1.05fr 1fr 0.8fr;
+    }
+  }
+  .sec-head.small {
+    margin-bottom: 28px;
+  }
+  .sec-head.small h2 {
+    font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+  }
+
+  .groups {
+    display: grid;
+    gap: 22px;
+  }
+  .chips {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .chips span {
+    font-family: var(--font-label);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    padding: 8px 14px;
+    color: var(--color-sub);
+    border: 1px solid var(--color-rule);
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.015);
+    transition:
+      color 0.3s,
+      border-color 0.3s,
+      background 0.3s,
+      transform 0.35s var(--ease-out-quart);
+    cursor: default;
+  }
+  .chips span:hover {
+    color: #fff;
+    border-color: var(--color-crimson);
+    background: rgba(225, 29, 39, 0.16);
+    transform: translateY(-3px);
+  }
+
+  .steps {
+    list-style: none;
+    position: relative;
+    display: grid;
+    gap: 6px;
+  }
+  .steps li {
+    display: grid;
+    grid-template-columns: 28px 44px 1fr;
+    gap: 14px;
+    align-items: center;
+    padding: 10px 12px;
+    border-radius: 4px;
+    transition:
+      background 0.35s,
+      transform 0.4s var(--ease-out-quart);
+  }
+  .steps li:hover {
+    background: rgba(225, 29, 39, 0.07);
+    transform: translateX(6px);
+  }
+  .n {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--color-crimson);
+  }
+  .ico {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(225, 29, 39, 0.6);
+    border-radius: 50%;
+    color: var(--color-crimson-hot);
+    transition:
+      background 0.35s,
+      color 0.35s,
+      transform 0.6s var(--ease-out-quart);
+  }
+  .steps li:hover .ico {
+    background: var(--color-crimson);
+    color: #fff;
+    transform: rotate(360deg);
+  }
+  .steps h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 1.1rem;
+    color: var(--color-heading);
+  }
+  .steps p {
+    margin-top: 2px;
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: var(--color-muted);
+  }
+
+  .quote {
+    position: relative;
+    overflow: hidden;
+    padding: 34px 30px;
+    border-radius: 4px;
+    min-height: 380px;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(160deg, #a30f18 0%, #4a060b 55%, #1a0305 100%);
+    border: 1px solid rgba(255, 90, 100, 0.25);
+    transition: transform 0.5s var(--ease-out-quart);
+  }
+  .quote:hover {
+    transform: translateY(-6px) rotate(-0.4deg);
+  }
+  .q-glow {
+    position: absolute;
+    right: -30%;
+    top: -30%;
+    width: 80%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 90, 100, 0.45), transparent 65%);
+    animation: breatheQ 6s ease-in-out infinite;
+  }
+  .mark {
+    position: relative;
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .q-text {
+    position: relative;
+    margin-top: 22px;
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-size: clamp(1.7rem, 2.4vw, 2.1rem);
+    line-height: 1.12;
+    color: #fff;
+  }
+  .q-text em {
+    font-style: normal;
+    color: #ffb3b8;
+  }
+  .sign {
+    position: relative;
+    margin-top: 20px;
+    font-family: var(--font-script);
+    font-size: 3rem;
+    line-height: 1;
+    color: #fff;
+  }
+  .q-foot {
+    position: relative;
+    margin-top: auto;
+    padding-top: 28px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  @keyframes breatheQ {
+    50% {
+      transform: scale(1.2);
+      opacity: 0.7;
+    }
+  }
+</style>

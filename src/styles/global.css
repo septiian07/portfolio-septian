@@ -1,73 +1,312 @@
 @import "tailwindcss";
 
-@theme {
-  /* Surface palette — tonal layers from void to elevated */
-  --color-base: #0a0a0a;
-  --color-raised: #141313;
-  --color-raised-2: #1c1b1b;
-  --color-raised-3: #201f1f;
-  --color-raised-4: #2b2a2a;
-  --color-raised-5: #353434;
+@theme static {
+  /* Surfaces — near-black with a warm red undertone */
+  --color-base: #050404;
+  --color-raised: #0d0909;
+  --color-raised-2: #150e0e;
+  --color-raised-3: #1d1313;
 
-  /* Text palette — warm-tinted monochromatic hierarchy */
-  --color-heading: #e5e2e1;
-  --color-sub: #c9c6c5;
-  --color-body: #c4c7c7;
-  --color-muted: #8e9192;
-  --color-faint: #7b7979;
-  --color-ghost: #5f5e5e;
+  /* Text */
+  --color-heading: #f6f1ef;
+  --color-sub: #d6cfcc;
+  --color-body: #b4adaa;
+  --color-muted: #8b8381;
+  --color-ghost: #5d5553;
 
-  /* Borders */
-  --color-rule: #444748;
-  --color-rule-subtle: #353434;
+  /* Lines */
+  --color-rule: #2b2020;
+  --color-rule-subtle: #1f1717;
 
-  /* Inverse (for filled buttons) */
-  --color-inv: #e5e2e1;
-  --color-inv-on: #313030;
-
-  /* Error (preserved from DESIGN.md) */
-  --color-err: #ffb4ab;
+  /* Brand — crimson */
+  --color-crimson: #e11d27;
+  --color-crimson-hot: #ff3d47;
+  --color-crimson-deep: #6e0a11;
 
   /* Fonts */
-  --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-label: 'Geist', 'SF Mono', ui-monospace, monospace;
+  --font-display: "Anton", "Bebas Neue", Impact, sans-serif;
+  --font-script: "Mrs Saint Delafield", "Brush Script MT", cursive;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-label: "Geist", "SF Mono", ui-monospace, monospace;
 
-  /* Easing — exponential out curves per design laws */
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
-  --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 html {
   scroll-behavior: smooth;
+  background: var(--color-base);
 }
 
 body {
-  background-color: var(--color-base);
+  background: var(--color-base);
   color: var(--color-body);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 ::selection {
-  background-color: oklch(0.7 0.008 80 / 0.3);
-  color: var(--color-heading);
+  background: var(--color-crimson);
+  color: #fff;
 }
 
-/* Fade-in animation for page load */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-base);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-crimson-deep);
+  border-radius: 8px;
+}
+
+/* ---------- Layout primitives ---------- */
+.container {
+  width: min(1240px, 100% - 10vw);
+  margin-inline: auto;
+}
+
+.section {
+  position: relative;
+  padding-block: clamp(70px, 9vw, 130px);
+  scroll-margin-top: 60px;
+}
+
+.label {
+  font-family: var(--font-label);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.label-red {
+  color: var(--color-crimson);
+}
+
+.display {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 0.95;
+  color: var(--color-heading);
+  font-weight: 400;
+}
+
+/* Section header with animated rule */
+.sec-head {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: clamp(36px, 5vw, 64px);
+}
+.sec-head h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--color-heading);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  white-space: nowrap;
+}
+.sec-head h2 em {
+  font-style: normal;
+  color: var(--color-crimson);
+}
+.sec-head .rule {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-crimson), var(--color-rule) 40%, transparent);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 1.2s var(--ease-out-expo) 0.2s;
+}
+.sec-head.in .rule {
+  transform: scaleX(1);
+}
+.sec-head .more {
+  font-family: var(--font-label);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-sub);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.3s, gap 0.3s;
+}
+.sec-head .more:hover {
+  color: var(--color-crimson-hot);
+  gap: 16px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 26px;
+  font-family: var(--font-label);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 0.3s var(--ease-out-quart), box-shadow 0.4s;
+  will-change: transform;
+}
+.btn svg {
+  transition: transform 0.35s var(--ease-out-quart);
+}
+.btn:hover svg {
+  transform: translateX(5px);
+}
+.btn-red {
+  background: var(--color-crimson);
+  color: #fff;
+  box-shadow: 0 0 0 0 rgba(225, 29, 39, 0.6);
+}
+.btn-red::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.28) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.7s var(--ease-out-quart);
+}
+.btn-red:hover {
+  box-shadow: 0 10px 40px -8px rgba(225, 29, 39, 0.7);
+}
+.btn-red:hover::before {
+  transform: translateX(120%);
+}
+.btn-ghost {
+  color: var(--color-heading);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(6px);
+}
+.btn-ghost:hover {
+  border-color: var(--color-crimson);
+  background: rgba(225, 29, 39, 0.1);
+}
+
+/* ---------- Scroll reveal ---------- */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.9s var(--ease-out-expo) var(--d, 0s),
+    transform 0.9s var(--ease-out-expo) var(--d, 0s),
+    filter 0.9s var(--ease-out-expo) var(--d, 0s);
+  filter: blur(6px);
+}
+.js [data-reveal="left"] {
+  transform: translateX(-50px);
+}
+.js [data-reveal="right"] {
+  transform: translateX(50px);
+}
+.js [data-reveal="scale"] {
+  transform: scale(0.92);
+}
+.js [data-reveal].in {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* ---------- Ambient layers ---------- */
+.noise {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 520px;
+  height: 520px;
+  margin: -260px 0 0 -260px;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(225, 29, 39, 0.16), transparent 62%);
+  opacity: 0;
+  transition: opacity 0.6s;
+  will-change: transform;
+}
+.cursor-glow.on {
+  opacity: 1;
+}
+
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  z-index: 100;
+  transform-origin: left;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, var(--color-crimson-deep), var(--color-crimson-hot));
+  box-shadow: 0 0 12px var(--color-crimson);
+}
+
+/* ---------- Keyframes ---------- */
+@keyframes marquee {
   to {
-    opacity: 1;
+    transform: translateX(-50%);
+  }
+}
+@keyframes floatY {
+  0%,
+  100% {
     transform: translateY(0);
   }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+@keyframes pulseRing {
+  0% {
+    box-shadow: 0 0 0 0 rgba(225, 29, 39, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 0 12px rgba(225, 29, 39, 0);
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.8s var(--ease-out-quint) forwards;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
 }

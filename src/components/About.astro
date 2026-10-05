@@ -1,35 +1,154 @@
 ---
 ---
 
-<section id="about" class="scroll-mt-24" style="margin-top: 160px;">
-  <div class="font-label text-[11px] uppercase tracking-[0.1em] text-muted mb-10">
-    About Me
-  </div>
+<section id="about" class="section">
+  <div class="container wrap">
+    <div class="sec-head" style="grid-column: 1 / -1; margin-bottom: 0;">
+      <h2>About <em>Me</em></h2>
+      <span class="rule"></span>
+    </div>
 
-  <div class="grid md:grid-cols-2 gap-16">
-    <div class="space-y-6">
-      <p class="text-body leading-[1.8] text-lg">
-        I am a dedicated Mobile Application Developer based in <span class="text-heading">Bandung, Indonesia</span>. With nearly 5 years of professional experience, I have developed a deep expertise in building robust, scalable, and high-performance cross-platform applications using the <strong class="text-heading font-semibold">Flutter</strong> framework.
+    <div class="lead" data-reveal="left">
+      <p class="label label-red">Who I am</p>
+      <h3 class="display big">
+        Clean code.<br />
+        <span class="outline">Pixel-perfect</span> apps.
+      </h3>
+    </div>
+
+    <div class="text" data-reveal style="--d: 0.1s">
+      <p>
+        I am a dedicated Mobile Application Developer based in <b>Bandung, Indonesia</b>. With nearly 5 years of professional experience, I have developed a deep expertise in building robust, scalable, and high-performance cross-platform applications using the <b>Flutter</b> framework.
       </p>
-      <p class="text-body leading-[1.8] text-lg">
-        My journey in mobile development has involved architecting complex systems from the ground up, converting intricate Figma designs into pixel-perfect UIs, and implementing advanced features such as facial recognition, mock location detection, and real-time Bluetooth integrations.
+      <p>
+        My journey has involved architecting complex systems from the ground up, converting intricate Figma designs into pixel-perfect UIs, and implementing advanced features such as facial recognition, mock location detection, and real-time Bluetooth integrations.
+      </p>
+      <p>
+        I am passionate about <b>clean architecture</b> and elegant design patterns (MVVM, Clean Architecture), ensuring the codebases I contribute to are maintainable and testable. I have consistently achieved over 80% unit test coverage in enterprise applications.
       </p>
     </div>
-    <div class="space-y-6">
-      <p class="text-body leading-[1.8] text-lg">
-        I am passionate about <strong class="text-heading font-semibold">clean architecture</strong> and elegant design patterns (MVVM, Clean Architecture), ensuring that the codebases I contribute to are maintainable and testable. I have consistently achieved over 80% unit test coverage in enterprise applications.
-      </p>
-      <div class="mt-8 pt-8" style="border-top: 1px solid var(--color-rule-subtle);">
-        <div class="flex items-center gap-3 mb-3">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-muted"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-          <span class="font-label text-[11px] uppercase tracking-[0.1em] text-muted">Education</span>
-        </div>
-        <p class="text-heading font-medium text-lg">Jenderal Achmad Yani University</p>
-        <p class="text-muted text-sm mt-1">Informatics · 2022 – 2026</p>
-        <span class="inline-block mt-3 font-label text-xs text-sub tracking-[0.05em] px-3 py-1.5 rounded-[0.25rem]" style="border: 1px solid var(--color-rule);">
-          GPA: 3.72
-        </span>
+
+    <div class="edu" data-reveal="scale" style="--d: 0.2s">
+      <div class="edu-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+      </div>
+      <p class="label label-red">Education</p>
+      <h4>Jenderal Achmad Yani University</h4>
+      <p class="sub">B.Sc. in Informatics</p>
+      <div class="row">
+        <span class="year">2022 – 2026</span>
+        <span class="gpa">GPA <b>3.72</b></span>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  .wrap {
+    display: grid;
+    gap: 44px 70px;
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+  @media (min-width: 960px) {
+    .wrap {
+      grid-template-columns: 0.9fr 1.1fr;
+    }
+    .lead {
+      grid-row: 2 / 4;
+    }
+  }
+  .sec-head {
+    margin-bottom: 0;
+  }
+  .big {
+    margin-top: 16px;
+    font-size: clamp(2.8rem, 6vw, 5.2rem);
+  }
+  .outline {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--color-crimson);
+    transition: color 0.4s;
+  }
+  .big:hover .outline {
+    color: var(--color-crimson);
+  }
+  .text {
+    display: grid;
+    gap: 20px;
+    font-size: 16px;
+    line-height: 1.85;
+  }
+  .text b {
+    color: var(--color-heading);
+    font-weight: 600;
+  }
+  .edu {
+    position: relative;
+    padding: 28px 30px;
+    border: 1px solid var(--color-rule);
+    background: linear-gradient(135deg, rgba(225, 29, 39, 0.1), rgba(255, 255, 255, 0.015) 55%);
+    border-radius: 4px;
+    overflow: hidden;
+    transition:
+      border-color 0.4s,
+      transform 0.5s var(--ease-out-quart);
+  }
+  .edu::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--color-crimson);
+  }
+  .edu:hover {
+    border-color: rgba(225, 29, 39, 0.5);
+    transform: translateY(-4px);
+  }
+  .edu-icon {
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    color: var(--color-crimson);
+    opacity: 0.8;
+  }
+  .edu h4 {
+    margin-top: 10px;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.6rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--color-heading);
+  }
+  .edu .sub {
+    color: var(--color-body);
+    margin-top: 4px;
+  }
+  .row {
+    margin-top: 18px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+  .year {
+    font-family: var(--font-label);
+    font-size: 12px;
+    color: var(--color-muted);
+  }
+  .gpa {
+    font-family: var(--font-label);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-sub);
+    padding: 5px 12px;
+    border: 1px solid var(--color-crimson);
+    border-radius: 2px;
+  }
+  .gpa b {
+    color: var(--color-crimson-hot);
+  }
+</style>

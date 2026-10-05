@@ -46,46 +46,198 @@ const experiences = [
     ],
   },
 ];
+const VISIBLE = 4;
 ---
 
-<section id="experience" class="scroll-mt-32" style="margin-top: 160px;">
-  <div
-    class="font-label text-[11px] uppercase tracking-[0.1em] text-muted mb-16"
-  >
-    Experience
-  </div>
+<section id="experience" class="section">
+  <div class="container">
+    <div class="sec-head">
+      <h2>Work <em>Experience</em></h2>
+      <span class="rule"></span>
+    </div>
 
-  <div class="space-y-20">
-    {
-      experiences.map((job) => (
-        <div>
-          <div class="font-label text-[11px] uppercase tracking-[0.1em] text-ghost mb-4">
-            {job.period}
-          </div>
-
-          <h3
-            class="font-serif text-heading font-semibold tracking-tight mb-2"
-            style="font-size: clamp(1.5rem, 2.5vw, 2rem);"
-          >
-            {job.role}
-          </h3>
-
-          <div class="flex flex-col sm:flex-row sm:items-center sm:gap-3 text-muted mb-8">
-            <span class="text-sub">{job.company}</span>
-            <span class="hidden sm:inline text-rule">·</span>
-            <span class="text-ghost">{job.location}</span>
-          </div>
-
-          <ul class="space-y-4">
-            {job.achievements.map((item) => (
-              <li class="flex items-start gap-4 text-body leading-[1.7]">
-                <span class="mt-[0.65rem] shrink-0 w-1 h-1 rounded-full bg-ghost" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))
-    }
+    <div class="timeline">
+      <span class="spine" aria-hidden="true"></span>
+      {
+        experiences.map((job, i) => (
+          <article class="job" data-reveal style={`--d:${0.05}s`}>
+            <span class="dot" aria-hidden="true"></span>
+            <div class="meta">
+              <span class="num">{String(i + 1).padStart(2, "0")}</span>
+              <span class="period">{job.period}</span>
+              <span class="loc">{job.location}</span>
+            </div>
+            <div class="main">
+              <h3>{job.role}</h3>
+              <p class="company">{job.company}</p>
+              <ul>
+                {job.achievements.slice(0, VISIBLE).map((a) => (
+                  <li>{a}</li>
+                ))}
+              </ul>
+              {job.achievements.length > VISIBLE && (
+                <details>
+                  <summary>
+                    <span class="open">+ {job.achievements.length - VISIBLE} more highlights</span>
+                    <span class="close">− Show less</span>
+                  </summary>
+                  <ul>
+                    {job.achievements.slice(VISIBLE).map((a) => (
+                      <li>{a}</li>
+                    ))}
+                  </ul>
+                </details>
+              )}
+            </div>
+          </article>
+        ))
+      }
+    </div>
   </div>
 </section>
+
+<style>
+  .timeline {
+    position: relative;
+    display: grid;
+    gap: 28px;
+    padding-left: 34px;
+  }
+  .spine {
+    position: absolute;
+    left: 5px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--color-crimson), var(--color-rule) 80%, transparent);
+  }
+  .job {
+    position: relative;
+    display: grid;
+    gap: 18px 50px;
+    padding: 28px 28px 30px;
+    border: 1px solid var(--color-rule-subtle);
+    border-radius: 4px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+    transition:
+      border-color 0.4s,
+      background 0.4s,
+      transform 0.5s var(--ease-out-quart);
+  }
+  .job:hover {
+    border-color: rgba(225, 29, 39, 0.4);
+    background: linear-gradient(180deg, rgba(225, 29, 39, 0.06), transparent);
+    transform: translateX(6px);
+  }
+  .dot {
+    position: absolute;
+    left: -34px;
+    top: 36px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--color-crimson);
+    animation: pulseRing 2s infinite;
+  }
+  @media (min-width: 900px) {
+    .job {
+      grid-template-columns: 220px 1fr;
+    }
+  }
+  .meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .num {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--color-crimson);
+  }
+  .period {
+    font-family: var(--font-label);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-crimson-hot);
+  }
+  .loc {
+    font-size: 13px;
+    color: var(--color-ghost);
+  }
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: clamp(1.7rem, 3vw, 2.4rem);
+    letter-spacing: 0.015em;
+    line-height: 1.05;
+    color: var(--color-heading);
+  }
+  .company {
+    margin: 6px 0 20px;
+    color: var(--color-sub);
+    font-size: 15px;
+  }
+  ul {
+    list-style: none;
+    display: grid;
+    gap: 11px;
+  }
+  li {
+    position: relative;
+    padding-left: 22px;
+    font-size: 14.5px;
+    line-height: 1.7;
+  }
+  li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.72em;
+    width: 8px;
+    height: 1px;
+    background: var(--color-crimson);
+  }
+  details {
+    margin-top: 12px;
+  }
+  details ul {
+    margin-top: 11px;
+    animation: slideDown 0.5s var(--ease-out-quart);
+  }
+  summary {
+    cursor: pointer;
+    list-style: none;
+    display: inline-block;
+    font-family: var(--font-label);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-crimson);
+    transition: color 0.3s;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary:hover {
+    color: var(--color-crimson-hot);
+  }
+  .close {
+    display: none;
+  }
+  details[open] .open {
+    display: none;
+  }
+  details[open] .close {
+    display: inline;
+  }
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+  }
+</style>
